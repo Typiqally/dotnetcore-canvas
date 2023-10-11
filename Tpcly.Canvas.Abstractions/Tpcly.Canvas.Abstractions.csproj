@@ -8,6 +8,7 @@
         <Authors>Typiqally</Authors>
         <PackageProjectUrl>https://github.com/Typiqally/dotnetcore-canvas</PackageProjectUrl>
         <RepositoryUrl>https://github.com/Typiqally/dotnetcore-canvas</RepositoryUrl>
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
     </PropertyGroup>
 
 </Project>
