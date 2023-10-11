@@ -38,4 +38,4 @@ services.AddHttpClient<ICanvasGraphQlApi, CanvasGraphQlApi>(canvasHttpClient);
 
 ## License
 
-Epsilon is licensed under the terms of GPL v3. See [LICENSE](LICENSE) for details.
+.NET Core Canvas is licensed under the terms of GPL v3. See [LICENSE](LICENSE) for details.
