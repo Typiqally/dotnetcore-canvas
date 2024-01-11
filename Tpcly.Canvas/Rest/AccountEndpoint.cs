@@ -16,6 +16,8 @@ public class AccountEndpoint : IAccountEndpoint
     {
         using var request = new HttpRequestMessage(HttpMethod.Get, $"v1/accounts/{accountId}/terms?per_page={limit}");
         var response = await _client.SendAsync(request);
+        response.EnsureSuccessStatusCode();
+        
         var collection = await response.Content.ReadFromJsonAsync<EnrollmentTermCollection>();
 
         return collection?.Terms;

@@ -21,20 +21,23 @@ public class PageEndpoint : IPageEndpoint
     {
         using var request = new HttpRequestMessage(HttpMethod.Get, $"v1/courses/{courseId}/pages/{id}");
         using var response = await _client.SendAsync(request);
+        if (response.StatusCode == HttpStatusCode.NotFound)
+        {
+            return null;
+        }
+        
+        response.EnsureSuccessStatusCode();
 
-        return response.StatusCode == HttpStatusCode.OK
-            ? await response.Content.ReadFromJsonAsync<Page>()
-            : null;
+        return await response.Content.ReadFromJsonAsync<Page>();
     }
 
     public async Task<IEnumerable<Page>?> GetAll(int courseId, IEnumerable<string> include)
     {
         using var request = new HttpRequestMessage(HttpMethod.Get, $"v1/courses/{courseId}/pages");
         using var response = await _client.SendAsync(request);
+        response.EnsureSuccessStatusCode();
 
-        return response.StatusCode == HttpStatusCode.OK
-            ? await response.Content.ReadFromJsonAsync<IEnumerable<Page>>()
-            : null;
+        return await response.Content.ReadFromJsonAsync<IEnumerable<Page>>();
     }
 
     public async Task<Page?> CreatePage(int courseId, Page page)
@@ -45,10 +48,9 @@ public class PageEndpoint : IPageEndpoint
         };
 
         using var response = await _client.SendAsync(request);
+        response.EnsureSuccessStatusCode();
 
-        return response.StatusCode == HttpStatusCode.OK
-            ? await response.Content.ReadFromJsonAsync<Page?>()
-            : null;
+        return await response.Content.ReadFromJsonAsync<Page>();
     }
 
     public async Task<Page?> UpdatePage(int courseId, Page page)
@@ -59,10 +61,9 @@ public class PageEndpoint : IPageEndpoint
         };
 
         using var response = await _client.SendAsync(request);
+        response.EnsureSuccessStatusCode();
 
-        return response.StatusCode == HttpStatusCode.OK
-            ? await response.Content.ReadFromJsonAsync<Page?>()
-            : null;
+        return await response.Content.ReadFromJsonAsync<Page>();
     }
 
     public async Task<Page?> UpdateOrCreatePage(int courseId, Page page)
