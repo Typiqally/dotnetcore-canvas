@@ -20,8 +20,9 @@ public class CanvasGraphQlApi : ICanvasGraphQlApi
         };
 
         var response = await _client.SendAsync(request);
-        var queryResponse = await response.Content.ReadFromJsonAsync<GraphQlQueryResponse>();
+        response.EnsureSuccessStatusCode();
 
+        var queryResponse = await response.Content.ReadFromJsonAsync<GraphQlQueryResponse>();
         return queryResponse?.Data;
     }
 }
