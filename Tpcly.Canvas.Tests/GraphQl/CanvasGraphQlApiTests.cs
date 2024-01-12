@@ -25,7 +25,7 @@ public class CanvasGraphQlApiTests
     public async Task Given_QueryValid_When_QueryIsSuccessful_Then_ReturnRequestedData()
     {
         // Arrange
-        var courseMock = new Course("test_course", null, null, null);
+        var courseMock = new Course("test_course", null, null, null, null);
 
         _httpMessageHandlerMock.SetupAnyRequest()
             .ReturnsJsonResponse(HttpStatusCode.OK, new GraphQlQueryResponse(
