@@ -10,7 +10,7 @@ namespace Tpcly.Canvas.Tests.Rest;
 public class AccountEndpointTests
 {
     [Test]
-    public async Task When_GetTerms_Then_ReturnListOfTerms()
+    public async Task Given_Authorized_When_GetTerms_Then_ReturnTerms()
     {
         // Arrange
         var httpMessageHandlerMock = new Mock<HttpMessageHandler>();

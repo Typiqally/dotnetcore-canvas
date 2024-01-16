@@ -21,7 +21,7 @@ public class PageEndpointTests
     }
 
     [Test]
-    public async Task When_GetAllPages_Then_ReturnAllPages()
+    public async Task Given_Authorized_When_GetAllPages_Then_ReturnAllPages()
     {
         // Arrange
         var pageMock = new Page("0") { Body = "test" };
@@ -46,7 +46,7 @@ public class PageEndpointTests
     }
     
     [Test]
-    public async Task When_GetPageById_Then_ReturnPage()
+    public async Task Given_Authorized_When_GetPageById_Then_ReturnPage()
     {
         // Arrange
         var pageMock = new Page("0") { Body = "test" };
@@ -70,7 +70,7 @@ public class PageEndpointTests
     }
     
     [Test]
-    public async Task When_CreatePage_Then_ReturnCreatedPage()
+    public async Task Given_Authorized_When_CreatePage_Then_ReturnCreatedPage()
     {
         // Arrange
         var pageMock = new Page("0") { Body = "test" };
@@ -94,7 +94,7 @@ public class PageEndpointTests
     }
     
     [Test]
-    public async Task Given_PageExists_When_UpdateOrCreatePage_Then_ReturnUpdatedPage()
+    public async Task Given_AuthorizedAndPageExists_When_UpdateOrCreatePage_Then_ReturnUpdatedPage()
     {
         // Arrange
         var pageMock = new Page("0") { Body = "test" };
@@ -126,7 +126,7 @@ public class PageEndpointTests
     }
     
     [Test]
-    public async Task Given_PageDoesntExist_When_UpdateOrCreatePage_Then_ReturnCreatedPage()
+    public async Task Given_AuthorizedAndPageDoesntExist_When_UpdateOrCreatePage_Then_ReturnCreatedPage()
     {
         // Arrange
         var pageMock = new Page("0") { Body = "test" };
