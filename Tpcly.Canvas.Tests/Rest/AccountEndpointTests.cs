@@ -38,4 +38,22 @@ public class AccountEndpointTests
             Assert.That(terms.Count(), Is.GreaterThanOrEqualTo(1));
         });
     }
+    
+    [Test]
+    public async Task Given_UnAuthorized_When_GetTerms_Then_ThrowException()
+    {
+        // Arrange
+        var httpMessageHandlerMock = new Mock<HttpMessageHandler>();
+        var httpClientMock = httpMessageHandlerMock.CreateClient();
+        httpClientMock.BaseAddress = new Uri("http://localhost/");
+        
+        httpMessageHandlerMock.SetupAnyRequest()
+            .ReturnsResponse(HttpStatusCode.Unauthorized);
+        
+        var accountEndpoint = new AccountEndpoint(httpClientMock);
+        
+        // Act
+        // Assert
+        Assert.ThrowsAsync<HttpRequestException>(async () => await accountEndpoint.GetTerms(0));
+    }
 }
