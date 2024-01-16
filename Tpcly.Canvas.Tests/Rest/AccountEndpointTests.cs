@@ -10,7 +10,7 @@ namespace Tpcly.Canvas.Tests.Rest;
 public class AccountEndpointTests
 {
     [Test]
-    public async Task When_GetTerms_Then_ReturnListOfTerms()
+    public async Task Given_Authorized_When_GetTerms_Then_ReturnTerms()
     {
         // Arrange
         var httpMessageHandlerMock = new Mock<HttpMessageHandler>();
@@ -37,5 +37,23 @@ public class AccountEndpointTests
             Assert.That(terms, Is.Not.Null);
             Assert.That(terms.Count(), Is.GreaterThanOrEqualTo(1));
         });
+    }
+    
+    [Test]
+    public async Task Given_UnAuthorized_When_GetTerms_Then_ThrowException()
+    {
+        // Arrange
+        var httpMessageHandlerMock = new Mock<HttpMessageHandler>();
+        var httpClientMock = httpMessageHandlerMock.CreateClient();
+        httpClientMock.BaseAddress = new Uri("http://localhost/");
+        
+        httpMessageHandlerMock.SetupAnyRequest()
+            .ReturnsResponse(HttpStatusCode.Unauthorized);
+        
+        var accountEndpoint = new AccountEndpoint(httpClientMock);
+        
+        // Act
+        // Assert
+        Assert.ThrowsAsync<HttpRequestException>(async () => await accountEndpoint.GetTerms(0));
     }
 }

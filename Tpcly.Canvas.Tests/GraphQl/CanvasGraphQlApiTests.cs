@@ -22,7 +22,7 @@ public class CanvasGraphQlApiTests
     }
 
     [Test]
-    public async Task Given_QueryValid_When_QueryIsSuccessful_Then_ReturnRequestedData()
+    public async Task Given_AuthorizedAndQueryValid_When_QueryIsSuccessful_Then_ReturnRequestedData()
     {
         // Arrange
         var courseMock = new Course("test_course", null, null, null, null);
@@ -53,7 +53,7 @@ public class CanvasGraphQlApiTests
     }
 
     [Test]
-    public async Task Given_QueryValid_When_QueryIsUnauthorized_Then_ReturnNull()
+    public async Task Given_UnauthorizedAndQueryValid_When_Query_Then_ReturnNull()
     {
         // Arrange
         _httpMessageHandlerMock.SetupAnyRequest()
@@ -69,7 +69,7 @@ public class CanvasGraphQlApiTests
     }
 
     [Test]
-    public async Task Given_QueryValid_When_QueryHasUnknownData_Then_ReturnNull()
+    public async Task Given_AuthorizedAndQueryValid_When_QueryHasUnknownData_Then_ReturnNull()
     {
         // Arrange
         _httpMessageHandlerMock.SetupAnyRequest()

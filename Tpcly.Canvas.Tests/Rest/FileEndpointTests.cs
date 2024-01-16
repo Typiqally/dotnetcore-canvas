@@ -9,7 +9,7 @@ namespace Tpcly.Canvas.Tests.Rest;
 public class FileEndpointTests
 {
     [Test]
-    public async Task When_GetByteArray_Then_ReturnByteArray()
+    public async Task Given_Authorized_When_GetByteArray_Then_ReturnByteArray()
     {
         // Arrange
         var httpMessageHandlerMock = new Mock<HttpMessageHandler>();
@@ -36,7 +36,7 @@ public class FileEndpointTests
     }
     
     [Test]
-    public async Task When_GetByteArrayIsUnauthorized_Then_ReturnNull()
+    public async Task Given_UnAuthorized_When_GetByteArray_Then_ThrowHttpRequestException()
     {
         // Arrange
         var httpMessageHandlerMock = new Mock<HttpMessageHandler>();
