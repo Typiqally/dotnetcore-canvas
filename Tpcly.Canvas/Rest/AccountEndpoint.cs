@@ -22,4 +22,16 @@ public class AccountEndpoint : IAccountEndpoint
 
         return collection?.Terms;
     }
+    
+    
+    public async Task<IEnumerable<User>?> GetUsers(int accountId, string searchQuery)
+    {
+        using var request = new HttpRequestMessage(HttpMethod.Get, $"v1/accounts/{accountId}/users?search_term={searchQuery}");
+        var response = await _client.SendAsync(request);
+        response.EnsureSuccessStatusCode();
+        
+        var collection = await response.Content.ReadFromJsonAsync<IEnumerable<User>>();
+
+        return collection;
+    }
 }
