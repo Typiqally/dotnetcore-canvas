@@ -4,6 +4,6 @@ namespace Tpcly.Canvas.Abstractions.Rest;
 
 public record User(
     [property: JsonPropertyName("name")] string Name,
-    [property: JsonPropertyName("id")] string Id,
+    [property: JsonPropertyName("id")] int Id,
     [property: JsonPropertyName("login_id")] string LoginId
 );
