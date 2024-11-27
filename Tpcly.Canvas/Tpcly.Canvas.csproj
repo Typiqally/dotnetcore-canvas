@@ -4,7 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
-        <PackageVersion>1.0.0-alpha.5</PackageVersion>
+        <PackageVersion>1.0.0-alpha.6</PackageVersion>
         <Authors>Typiqally</Authors>
         <PackageProjectUrl>https://github.com/Typiqally/dotnetcore-canvas</PackageProjectUrl>
         <RepositoryUrl>https://github.com/Typiqally/dotnetcore-canvas</RepositoryUrl>
