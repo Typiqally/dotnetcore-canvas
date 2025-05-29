@@ -7,4 +7,7 @@ public interface ICanvasRestApi
     public IFileEndpoint Files { get; }
 
     public IPageEndpoint Pages { get; }
+
+    public Task<HttpResponseMessage> Request(HttpMethod method, string path, HttpContent? body);
+
 }
